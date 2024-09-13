@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +20,8 @@ class _ReleasesDetailsViewState extends State<ReleasesDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
     viewModel.getReleases(provider.appLanguage);
 
     return BlocProvider(
@@ -57,8 +55,8 @@ class _ReleasesDetailsViewState extends State<ReleasesDetailsView> {
                     if (notification.metrics.pixels ==
                             notification.metrics.maxScrollExtent &&
                         notification is ScrollUpdateNotification) {
-                      viewModel.getReleases(provider.appLanguage,fromPagination: true);
-
+                      viewModel.getReleases(provider.appLanguage,
+                          fromPagination: true);
                     }
                     return true;
                   },

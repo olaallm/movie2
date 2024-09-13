@@ -11,11 +11,11 @@ import '../../../app_provider/app_provider.dart';
 import '../Api/Api_Manager.dart';
 
 class CategoryDetails extends StatelessWidget {
-CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
+  CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
 
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
     viewModel.getCategory(provider.appLanguage);
     return BlocBuilder<CategoryDetailsViewModel, Categorystate>(
       bloc: viewModel,
@@ -46,8 +46,7 @@ CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: .8
-              ),
+                  childAspectRatio: .8),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.all(10), // إضافة padding حول كل عنصر
@@ -63,7 +62,8 @@ CategoryDetailsViewModel viewModel = CategoryDetailsViewModel();
                       );
                     },
                     child: CategoryItem(
-                      categoryItem: state.categoryList[index],index:index,
+                      categoryItem: state.categoryList[index],
+                      index: index,
                     ),
                   ),
                 );

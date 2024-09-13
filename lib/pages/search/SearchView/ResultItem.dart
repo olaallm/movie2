@@ -4,10 +4,8 @@ import 'package:movie_appp/app_colors.dart';
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 import 'package:movie_appp/pages/home_screen/movie_details/movie_details_view.dart';
 
-
 class ResultItem extends StatelessWidget {
-
-   Movie movie;
+  Movie movie;
 
   ResultItem({
     required this.movie,
@@ -16,14 +14,13 @@ class ResultItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MovieDetailsView(movieId:movie.id.toString(),
+            builder: (context) => MovieDetailsView(
+              movieId: movie.id.toString(),
             ),
           ),
         );
@@ -41,8 +38,14 @@ class ResultItem extends StatelessWidget {
                 width: 100,
                 fit: BoxFit.fill,
                 imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                placeholder: (context, url) => Center(child: CircularProgressIndicator(color: AppColors.yellowColor,)),
-                errorWidget: (context, url, error) => Icon(Icons.error,color: AppColors.whiteColor,),
+                placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(
+                  color: AppColors.yellowColor,
+                )),
+                errorWidget: (context, url, error) => Icon(
+                  Icons.error,
+                  color: AppColors.whiteColor,
+                ),
               ),
             ),
             Expanded(
@@ -61,7 +64,8 @@ class ResultItem extends StatelessWidget {
                     SizedBox(height: 4),
                     Text(
                       movie.overview ?? 'No Overview',
-                      style: TextStyle(color: AppColors.whiteColor,fontSize: 12),
+                      style:
+                          TextStyle(color: AppColors.whiteColor, fontSize: 12),
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -73,29 +77,25 @@ class ResultItem extends StatelessWidget {
                           color: Colors.yellow,
                           size: 20,
                         ),
-                        SizedBox(
-                            width: 5),
+                        SizedBox(width: 5),
                         Text(
-                          movie.voteAverage?.toStringAsFixed(1)??'',
+                          movie.voteAverage?.toStringAsFixed(1) ?? '',
                           style: TextStyle(
-                              color: AppColors.whiteColor,fontSize: 12),
+                              color: AppColors.whiteColor, fontSize: 12),
                         ),
-                        SizedBox(
-                            width: 5),
+                        SizedBox(width: 5),
                         Icon(
                           Icons.calendar_today,
                           color: AppColors.whiteColor,
                           size: 12,
                         ),
-                        SizedBox(
-                            width: 5),
+                        SizedBox(width: 5),
                         Text(
-                          movie.releaseDate??'',
+                          movie.releaseDate ?? '',
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
-                              .copyWith(
-                                  fontSize: 12),
+                              .copyWith(fontSize: 12),
                         ),
                       ],
                     ),

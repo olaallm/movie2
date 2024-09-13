@@ -1,5 +1,3 @@
-
-
 import 'package:movie_appp/pages/home_screen/model/MovieVideos.dart';
 
 import '../../model/movieDetails.dart';
@@ -19,6 +17,7 @@ class MovieDetailsSuccessState extends MovieDetailsState {
 
   MovieDetailsSuccessState({required this.movieDetail});
 }
+
 class MovieVideoLoadingState extends MovieDetailsState {}
 
 class MovieVideoErrorState extends MovieDetailsState {

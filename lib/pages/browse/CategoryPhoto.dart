@@ -30,11 +30,6 @@ Category({required this.id,required this.imagePath, this.name=""});
       Category(id:19 , imagePath: "assets/images/western.png"),
 
 
-
-
     ];
   }
-
-
-
 }

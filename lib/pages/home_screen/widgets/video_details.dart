@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_appp/app_colors.dart';
 import 'package:movie_appp/pages/home_screen/model/MovieVideos.dart';
 
-
 import 'package:timeago/timeago.dart' as timeago;
 
 class VideoDetails extends StatelessWidget {
@@ -11,19 +10,14 @@ class VideoDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-
-      Column(
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 5,
-                  left: 5
-                ),
+                padding: const EdgeInsets.only(top: 5, left: 5),
                 child: Text(
                   video.name ?? '',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -35,10 +29,7 @@ class VideoDetails extends StatelessWidget {
             ),
             SizedBox(width: 8), // Adds some space between the two columns
             Padding(
-              padding: const EdgeInsets.only(
-                top: 5,
-                right: 5
-              ),
+              padding: const EdgeInsets.only(top: 5, right: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

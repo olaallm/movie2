@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +6,6 @@ import 'package:movie_appp/app_colors.dart';
 import 'package:movie_appp/pages/home_screen/api/api_constant.dart';
 import 'package:movie_appp/pages/home_screen/model/movieDetails.dart';
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
-
 
 import 'package:movie_appp/pages/watch_list/cubit/movies_state.dart';
 import 'package:movie_appp/pages/watch_list/cubit/watch_list_view_model.dart';
@@ -52,7 +48,8 @@ class _MovieInfoState extends State<MovieInfo> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            AppLocalizations.of(context)!.release_data +(widget.movie.releaseDate??''),
+            AppLocalizations.of(context)!.release_data +
+                (widget.movie.releaseDate ?? ''),
             style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
@@ -90,8 +87,9 @@ class _MovieInfoState extends State<MovieInfo> {
                       Positioned(
                           top: -6,
                           left: -7,
-                          child:  BookMarkWidget(movie: Movie.fromJson(widget.movie.toJson()),)
-                      )
+                          child: BookMarkWidget(
+                            movie: Movie.fromJson(widget.movie.toJson()),
+                          ))
                     ],
                   ),
                   SizedBox(width: 15),
@@ -108,7 +106,8 @@ class _MovieInfoState extends State<MovieInfo> {
                         SizedBox(height: 15),
                         AnimatedCrossFade(
                           firstChild: Text(
-                            widget.movie.overview ?? AppLocalizations.of(context)!.empty,
+                            widget.movie.overview ??
+                                AppLocalizations.of(context)!.empty,
                             maxLines: 4,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.headlineMedium,
@@ -129,7 +128,9 @@ class _MovieInfoState extends State<MovieInfo> {
                             });
                           },
                           child: Text(
-                            isExpanded ? AppLocalizations.of(context)!.less: AppLocalizations.of(context)!.more_read,
+                            isExpanded
+                                ? AppLocalizations.of(context)!.less
+                                : AppLocalizations.of(context)!.more_read,
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ),

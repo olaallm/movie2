@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -19,41 +17,41 @@ class MovieDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
     viewModel.getMovieDetail(movieId, provider.appLanguage);
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocBuilder<MovieDetailsViewModel, MovieDetailsState>(
           builder: (context, state) {
-            if (state is MovieDetailsLoadingState) {
-              return Center(
+        if (state is MovieDetailsLoadingState) {
+          return Center(
             child: LoadingAnimationWidget.staggeredDotsWave(
               color: AppColors.whiteColor,
               size: 50,
             ),
-              );
-            } else if (state is MovieDetailsErrorState) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Something went wrong: ${state.errorMessage}',
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Try Again'),
-                    ),
-                  ],
+          );
+        } else if (state is MovieDetailsErrorState) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Something went wrong: ${state.errorMessage}',
+                  style: TextStyle(color: AppColors.whiteColor),
                 ),
-              );
-            } else if (state is MovieDetailsSuccessState) {
-              return MovieDetailsWidget(movie: state.movieDetail);
-            }
-            return Text('noooooooo');
-          }),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Try Again'),
+                ),
+              ],
+            ),
+          );
+        } else if (state is MovieDetailsSuccessState) {
+          return MovieDetailsWidget(movie: state.movieDetail);
+        }
+        return Text('noooooooo');
+      }),
     );
   }
 }

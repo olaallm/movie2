@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_appp/pages/home_screen/widgets/cast_widget.dart';
 
-
 class MovieCast extends StatelessWidget {
   final dynamic credits;
 

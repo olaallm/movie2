@@ -15,4 +15,5 @@ class MoreLikeThisSuccessState extends MoreLikeState {
 
   MoreLikeThisSuccessState({required this.moreLike});
 }
-class MoreLikeThisPaginationState extends MoreLikeState{}
+
+class MoreLikeThisPaginationState extends MoreLikeState {}

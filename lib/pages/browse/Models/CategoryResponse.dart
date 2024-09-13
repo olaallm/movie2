@@ -13,7 +13,8 @@
 
 class CategoryResponse {
   CategoryResponse({
-      this.genres,});
+    this.genres,
+  });
 
   CategoryResponse.fromJson(dynamic json) {
     if (json['genres'] != null) {
@@ -32,7 +33,6 @@ class CategoryResponse {
     }
     return map;
   }
-
 }
 
 /// id : 28
@@ -40,8 +40,9 @@ class CategoryResponse {
 
 class Genres {
   Genres({
-      this.id, 
-      this.name,});
+    this.id,
+    this.name,
+  });
 
   Genres.fromJson(dynamic json) {
     id = json['id'];
@@ -56,5 +57,4 @@ class Genres {
     map['name'] = name;
     return map;
   }
-
 }

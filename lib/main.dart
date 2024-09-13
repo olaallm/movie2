@@ -14,21 +14,16 @@ import 'package:movie_appp/pages/watch_list/watch_list_view.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  // Ensure proper binding and initialization before any async operations.
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Set up Bloc observer for debugging and monitoring Bloc events.
   Bloc.observer = MyBlocObserver();
 
-  // Initialize Firebase with platform-specific options.
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Enable Firestore network; useful if previously disabled.
   await FirebaseFirestore.instance.enableNetwork();
 
-  // Start the application with ChangeNotifierProvider for AppProvider.
   runApp(
     ChangeNotifierProvider(
       create: (context) => AppProvider(),
@@ -40,7 +35,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Access the AppProvider instance from the context.
     var provider = Provider.of<AppProvider>(context);
 
     return ScreenUtilInit(

@@ -1,8 +1,6 @@
-
-
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 
-abstract class WatchListRepository{
+abstract class WatchListRepository {
   Future<bool> deleteAll();
   Future<bool> removeMovie(Movie movie);
   Stream<List<Movie>> getAllMovies();

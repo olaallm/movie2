@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,30 +11,28 @@ import 'package:provider/provider.dart';
 
 import '../../../app_colors.dart';
 
-
 class Moviespage extends StatelessWidget {
   static const String routeName = "Moviespage";
   final Category category;
   Moviespage({required this.category});
-MovieDetailsViewModel viewModel = MovieDetailsViewModel();
-
+  MovieDetailsViewModel viewModel = MovieDetailsViewModel();
 
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
-   viewModel.getMovies(category.id,provider.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
+    viewModel.getMovies(category.id, provider.appLanguage);
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(category.name ?? "",
-              style: TextStyle(color: Colors.white)),
+          title:
+              Text(category.name ?? "", style: TextStyle(color: Colors.white)),
         ),
         body: BlocProvider(
           create: (context) => viewModel,
           child: BlocBuilder<MovieDetailsViewModel, Moviestate>(
               buildWhen: (previous, current) =>
-              current is! PaginationMovieState,
+                  current is! PaginationMovieState,
               builder: (context, state) {
                 if (state is LoadingMovieState) {
                   return Center(
@@ -63,9 +58,9 @@ MovieDetailsViewModel viewModel = MovieDetailsViewModel();
                   return NotificationListener<ScrollNotification>(
                       onNotification: (notification) {
                         if (notification.metrics.pixels ==
-                            notification.metrics.maxScrollExtent &&
+                                notification.metrics.maxScrollExtent &&
                             notification is ScrollUpdateNotification) {
-                          viewModel.getMovies(category.id,provider.appLanguage,
+                          viewModel.getMovies(category.id, provider.appLanguage,
                               fromPagination: true);
                         }
                         return true;
@@ -75,12 +70,11 @@ MovieDetailsViewModel viewModel = MovieDetailsViewModel();
                           Expanded(
                             child: GridView.builder(
                               gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 5,
-                                  mainAxisSpacing: 30,
-                                  childAspectRatio: .55
-                              ),
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 30,
+                                      childAspectRatio: .55),
                               itemBuilder: (context, index) {
                                 return MovieItem(movie: state.movieList[index]);
                               },
@@ -89,25 +83,24 @@ MovieDetailsViewModel viewModel = MovieDetailsViewModel();
                           ),
                           BlocBuilder<MovieDetailsViewModel, Moviestate>(
                               builder: (context, state) {
-                                if (state is PaginationMovieState) {
-                                  return SafeArea(
-                                    child: Center(
-                                        child: CircularProgressIndicator(
-                                            color: AppColors.yellowColor)),
-                                  );
-                                } else {}
-                                return SizedBox.shrink();
-                              })
+                            if (state is PaginationMovieState) {
+                              return SafeArea(
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                        color: AppColors.yellowColor)),
+                              );
+                            } else {}
+                            return SizedBox.shrink();
+                          })
                         ],
                       ));
                 }
                 return Center(
                     child: Text(
-                      'noooooooo',
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ));
+                  'noooooooo',
+                  style: TextStyle(color: AppColors.whiteColor),
+                ));
               }),
         ));
   }
 }
-

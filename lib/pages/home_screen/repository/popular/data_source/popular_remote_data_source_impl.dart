@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 
-
-
 import '../../../api/api_constant.dart';
 import '../popular_data_source.dart';
 

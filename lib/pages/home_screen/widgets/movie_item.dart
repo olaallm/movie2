@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movie_appp/pages/watch_list/widgets/book_mark_widget.dart';
-
 
 import '../../../../app_colors.dart';
 import '../api/api_constant.dart';
@@ -52,7 +50,8 @@ class _MovieItemState extends State<MovieItem> {
           color: AppColors.forGroundColor,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Stack(
@@ -73,8 +72,7 @@ class _MovieItemState extends State<MovieItem> {
                         size: 50,
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        Icon(Icons.error),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
                 Positioned(
@@ -103,8 +101,10 @@ class _MovieItemState extends State<MovieItem> {
               padding: const EdgeInsets.symmetric(horizontal: 11.0),
               child: Text(
                 widget.movie.releaseDate ?? "",
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 13, fontWeight: FontWeight.normal),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 13, fontWeight: FontWeight.normal),
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,
               ),

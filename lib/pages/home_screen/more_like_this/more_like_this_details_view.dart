@@ -20,18 +20,17 @@ class MoreLikeThisDetailsView extends StatelessWidget {
   MoreLikeThisViewModel viewModel = MoreLikeThisViewModel();
 
   @override
-
-
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
-    viewModel.getMoreLike(id,provider.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
+    viewModel.getMoreLike(id, provider.appLanguage);
 
     return BlocProvider(
-      create: (context)=>viewModel,
+      create: (context) => viewModel,
       child: BlocBuilder<MoreLikeThisViewModel, MoreLikeState>(
-          buildWhen: (previous, current) => current is !MoreLikeThisPaginationState,
+          buildWhen: (previous, current) =>
+              current is! MoreLikeThisPaginationState,
           builder: (context, state) {
             if (state is MoreLikeThisLoadingState) {
               return Center(
@@ -45,7 +44,8 @@ class MoreLikeThisDetailsView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppLocalizations.of(context)!.some +state.errorMessage),
+                    Text(AppLocalizations.of(context)!.some +
+                        state.errorMessage),
                     ElevatedButton(
                       onPressed: () {},
                       child: Text(AppLocalizations.of(context)!.try_again),
@@ -55,39 +55,44 @@ class MoreLikeThisDetailsView extends StatelessWidget {
               );
             } else if (state is MoreLikeThisSuccessState) {
               return NotificationListener<ScrollNotification>(
-                  onNotification: (notification){
-
-                    if(notification.metrics.pixels==notification.metrics.maxScrollExtent&&notification is ScrollUpdateNotification){
-                      viewModel.getMoreLike(id,provider.appLanguage,fromPagination: true);
+                  onNotification: (notification) {
+                    if (notification.metrics.pixels ==
+                            notification.metrics.maxScrollExtent &&
+                        notification is ScrollUpdateNotification) {
+                      viewModel.getMoreLike(id, provider.appLanguage,
+                          fromPagination: true);
                     }
-                    return true ;
-                  },child: Row(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: state.moreLike.length,
-                        itemBuilder: (context, index) {
-                          return MovieItem(movie: state.moreLike[index]);
-                        }
-                    ),
-                  ),
-                  BlocBuilder<MoreLikeThisViewModel, MoreLikeState>(
-                    bloc: viewModel,
-                      builder: (context, state) {
-                        if(state is MoreLikeThisPaginationState) {
-                          return SafeArea(child:Center(child: CircularProgressIndicator(
-                              color: AppColors.yellowColor)));
-                        }else{
-
-                        }
-                        return SizedBox.shrink();   }
-                  )
-                ],
-              )
-              );
+                    return true;
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.moreLike.length,
+                            itemBuilder: (context, index) {
+                              return MovieItem(movie: state.moreLike[index]);
+                            }),
+                      ),
+                      BlocBuilder<MoreLikeThisViewModel, MoreLikeState>(
+                          bloc: viewModel,
+                          builder: (context, state) {
+                            if (state is MoreLikeThisPaginationState) {
+                              return SafeArea(
+                                  child: Center(
+                                      child: CircularProgressIndicator(
+                                          color: AppColors.yellowColor)));
+                            } else {}
+                            return SizedBox.shrink();
+                          })
+                    ],
+                  ));
             }
-            return Center(child: Text(AppLocalizations.of(context)!.empty,style: TextStyle(color: AppColors.whiteColor),));
+            return Center(
+                child: Text(
+              AppLocalizations.of(context)!.empty,
+              style: TextStyle(color: AppColors.whiteColor),
+            ));
           }),
     );
   }

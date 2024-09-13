@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -18,14 +17,16 @@ class MovieCarousel extends StatefulWidget {
 
 class _MovieCarouselState extends State<MovieCarousel> {
   int _current = 0;
-  final CarouselSliderController _controller = CarouselSliderController(); // Create a CarouselController
+  final CarouselSliderController _controller =
+      CarouselSliderController(); // Create a CarouselController
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CarouselSlider.builder(
-          carouselController: _controller, // Assign the controller to the CarouselSlider
+          carouselController:
+              _controller, // Assign the controller to the CarouselSlider
           itemCount: widget.popularList.length,
           options: CarouselOptions(
             height: 300,
@@ -56,7 +57,8 @@ class _MovieCarouselState extends State<MovieCarousel> {
             children: widget.popularList.asMap().entries.map((entry) {
               return GestureDetector(
                 onTap: () {
-                  _controller.animateToPage(entry.key); // Move to the selected page
+                  _controller
+                      .animateToPage(entry.key); // Move to the selected page
                   setState(() {
                     _current = entry.key;
                   });
@@ -68,8 +70,8 @@ class _MovieCarouselState extends State<MovieCarousel> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black
-                        : Colors.white)
+                            ? Colors.black
+                            : Colors.white)
                         .withOpacity(_current == entry.key ? 0.9 : 0.4),
                   ),
                 ),

@@ -5,8 +5,6 @@ import 'package:movie_appp/app_colors.dart';
 import 'package:movie_appp/pages/home_screen/api/api_constant.dart';
 import 'package:movie_appp/pages/home_screen/model/movieDetails.dart';
 
-
-
 class CastItem extends StatelessWidget {
   Cast cast;
   CastItem({required this.cast});
@@ -18,27 +16,28 @@ class CastItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width:80,
+            width: 80,
             height: 80,
             child: ClipOval(
-
                 child: CachedNetworkImage(
-                  imageUrl:  ApiConstant.baseImageUrl+(cast.profilePath??''),
+              imageUrl: ApiConstant.baseImageUrl + (cast.profilePath ?? ''),
               placeholder: (context, url) => Center(
                 child: LoadingAnimationWidget.staggeredDotsWave(
                   color: AppColors.whiteColor,
                   size: 50,
                 ),
               ),
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.error, color: AppColors.whiteColor,),
-                  fit: BoxFit.cover,
-                )
-            ),
+              errorWidget: (context, url, error) => Icon(
+                Icons.error,
+                color: AppColors.whiteColor,
+              ),
+              fit: BoxFit.cover,
+            )),
           ),
           Container(
             margin: EdgeInsets.all(10),
-            child: Column(mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   cast.originalName ?? '',

@@ -8,10 +8,5 @@ class ApiConstants {
 
   // API key
   static const String apiKey = 'd17eaee37c3c16b0b2ccaee413f91589';
-   static const String sourcesApi = '/3/search/movie';
-
+  static const String sourcesApi = '/3/search/movie';
 }
-
-
-
-

@@ -21,7 +21,9 @@ class CategoryDetailsViewModel extends Cubit<Categorystate> {
   void getCategory(String appLanguage) async {
     try {
       final response = await repository.getCategory(appLanguage);
-      if (response == null || response.genres == null || response.genres!.isEmpty) {
+      if (response == null ||
+          response.genres == null ||
+          response.genres!.isEmpty) {
         emit(ErrorCategoryState(ErrorMessage: "Error: Category list is empty"));
       } else {
         final list = Category.getCategory();

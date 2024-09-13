@@ -1,5 +1,3 @@
-
-
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 
 abstract class ReleasesState {}
@@ -17,6 +15,5 @@ class ReleasesSuccessState extends ReleasesState {
 
   ReleasesSuccessState({required this.releasesList});
 }
-class ReleasesPaginationState extends ReleasesState{
 
-}
+class ReleasesPaginationState extends ReleasesState {}

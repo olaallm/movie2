@@ -14,6 +14,7 @@ class ApiManager {
       'language': appLanguage
     });
     var response = await http.get(url);
+    
     try {
       var json = jsonDecode(response.body);
       return CategoryResponse.fromJson(json);

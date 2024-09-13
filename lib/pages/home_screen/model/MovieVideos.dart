@@ -3,8 +3,9 @@
 
 class MovieVideos {
   MovieVideos({
-      this.id, 
-      this.results,});
+    this.id,
+    this.results,
+  });
 
   MovieVideos.fromJson(dynamic json) {
     id = json['id'];
@@ -26,7 +27,6 @@ class MovieVideos {
     }
     return map;
   }
-
 }
 
 /// iso_639_1 : "en"
@@ -42,16 +42,17 @@ class MovieVideos {
 
 class Video {
   Video({
-      this.iso6391, 
-      this.iso31661, 
-      this.name, 
-      this.key, 
-      this.site, 
-      this.size, 
-      this.type, 
-      this.official, 
-      this.publishedAt, 
-      this.id,});
+    this.iso6391,
+    this.iso31661,
+    this.name,
+    this.key,
+    this.site,
+    this.size,
+    this.type,
+    this.official,
+    this.publishedAt,
+    this.id,
+  });
 
   Video.fromJson(dynamic json) {
     iso6391 = json['iso_639_1'];
@@ -90,5 +91,4 @@ class Video {
     map['id'] = id;
     return map;
   }
-
 }

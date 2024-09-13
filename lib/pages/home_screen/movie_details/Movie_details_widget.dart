@@ -30,11 +30,9 @@ class MovieDetailsWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-
-                child:VideoSliderWidget(movieId: movie.id.toString())
-            ),
-            MovieInfo(movie: movie,
+            Container(child: VideoSliderWidget(movieId: movie.id.toString())),
+            MovieInfo(
+              movie: movie,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -43,11 +41,11 @@ class MovieDetailsWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
+            Container(height: 150, child: CastWidget(credits: movie.credits!)),
             Container(
-              height: 150,
-                child: CastWidget(credits: movie.credits!)),
-            Container(color: AppColors.backgroundColor,
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+              color: AppColors.backgroundColor,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -62,7 +60,6 @@ class MovieDetailsWidget extends StatelessWidget {
                 ],
               ),
             ),
-
             SizedBox(height: 15),
           ],
         ),

@@ -8,6 +8,5 @@ class ApiConstant {
   static const String similar = '/similar';
   static const String video = '/videos';
   static const String apiKey = '8ad9e9ba188516e715696297859dfd0f';
-  static String baseImageUrl='https://image.tmdb.org/t/p/original';
-
+  static String baseImageUrl = 'https://image.tmdb.org/t/p/original';
 }

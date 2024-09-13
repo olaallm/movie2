@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:movie_appp/pages/home_screen/popular/cubit/popular_state.dart';
 import 'package:movie_appp/pages/home_screen/repository/popular/data_source/popular_remote_data_source_impl.dart';
@@ -13,7 +12,8 @@ class PopularDetailsViewModel extends Cubit<PopularState> {
   PopularDetailsViewModel() : super(PopularLoadingState()) {
     remoteDataSource = PopularRemoteDataSourceImpl();
     popularRepository =
-        PopularRepositoryImpl(remoteDataSource: remoteDataSource) as PopularRepository;
+        PopularRepositoryImpl(remoteDataSource: remoteDataSource)
+            as PopularRepository;
   }
 
   void getPopular(String appLanguage) async {

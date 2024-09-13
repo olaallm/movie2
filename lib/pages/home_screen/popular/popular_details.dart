@@ -12,12 +12,10 @@ import 'cubit/popular_details_view_model.dart';
 class PopularDetails extends StatelessWidget {
   PopularDetailsViewModel viewModel = PopularDetailsViewModel();
 
-
-
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
     viewModel.getPopular(provider.appLanguage);
 
     return BlocProvider(

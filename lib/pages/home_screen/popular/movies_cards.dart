@@ -90,8 +90,9 @@ class _MovieCardState extends State<MovieCard> {
                   Positioned(
                       top: -6,
                       left: -7,
-                      child: BookMarkWidget(movie: widget.movie,)
-                  )
+                      child: BookMarkWidget(
+                        movie: widget.movie,
+                      ))
                 ],
               ),
             ),

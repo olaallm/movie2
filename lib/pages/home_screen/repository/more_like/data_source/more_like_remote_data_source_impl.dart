@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 import 'package:http/http.dart' as http;
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 import 'package:movie_appp/pages/home_screen/repository/more_like/more_like_data_source.dart';
@@ -9,7 +8,8 @@ import '../../../api/api_constant.dart';
 
 class MoreLikeRemoteDataSourceImpl implements MoreLikeRemoteDataSource {
   @override
-  Future<MovieResponse?> getMoreLike(String id, int pageNumber,String appLanguage) async {
+  Future<MovieResponse?> getMoreLike(
+      String id, int pageNumber, String appLanguage) async {
     Uri url = Uri.https(
         ApiConstant.baseUrl, ApiConstant.apiName + id + ApiConstant.similar, {
       'api_key': '8ad9e9ba188516e715696297859dfd0f',

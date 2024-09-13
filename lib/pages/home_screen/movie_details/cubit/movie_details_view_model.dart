@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_appp/pages/home_screen/model/movieDetails.dart';
 import 'package:movie_appp/pages/home_screen/movie_details/cubit/movie_details_state.dart';
@@ -13,45 +12,48 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsState> {
   late MovieDetailsRemoteDataSource remoteDataSource;
 
   MovieDetailsViewModel() : super(MovieDetailsLoadingState()) {
-    remoteDataSource = MovieDetailsRemoteDataSourceImpl() as MovieDetailsRemoteDataSource;
+    remoteDataSource =
+        MovieDetailsRemoteDataSourceImpl() as MovieDetailsRemoteDataSource;
     movieDetailsRepository =
-        MovieDetailsRepositoryImpl(remoteDataSource: remoteDataSource) as MovieDetailsRepository;
+        MovieDetailsRepositoryImpl(remoteDataSource: remoteDataSource)
+            as MovieDetailsRepository;
   }
   late MovieDetails movieDetails;
 
-  Future<void> getMovieDetail(String movieId,String appLanguage) async {
+  Future<void> getMovieDetail(String movieId, String appLanguage) async {
     try {
-      var response = await movieDetailsRepository.getMovieDetails(movieId,appLanguage);
+      var response =
+          await movieDetailsRepository.getMovieDetails(movieId, appLanguage);
 
       if (response == null ||
           response.title == null ||
           response.title!.isEmpty) {
         emit(MovieDetailsErrorState(errorMessage: 'Empty data'));
       } else {
-        movieDetails=response;
+        movieDetails = response;
         emit(MovieDetailsSuccessState(movieDetail: response));
       }
     } catch (e) {
       emit(MovieDetailsErrorState(errorMessage: e.toString()));
     }
   }
-   void getMovieVideos(String movieId,String appLanguage) async {
+
+  void getMovieVideos(String movieId, String appLanguage) async {
     emit(MovieVideoLoadingState());
-    try{
-      var response=await movieDetailsRepository.getMovieVideos(movieId,appLanguage);
-      if(response==null||response.results==null||response.results!.isEmpty){
+    try {
+      var response =
+          await movieDetailsRepository.getMovieVideos(movieId, appLanguage);
+      if (response == null ||
+          response.results == null ||
+          response.results!.isEmpty) {
         print("111111111111111");
-        emit(MovieVideoErrorState(errorMessage:'no Data Found'));
-      }else {
+        emit(MovieVideoErrorState(errorMessage: 'no Data Found'));
+      } else {
         print("22222222222");
         emit(MovieVideoSuccessState(videoList: response.results!));
-
       }
-
-    }catch(e){
+    } catch (e) {
       emit(MovieVideoErrorState(errorMessage: e.toString()));
     }
   }
-
-
 }

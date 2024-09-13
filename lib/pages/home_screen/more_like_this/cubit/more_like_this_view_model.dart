@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 import 'package:movie_appp/pages/home_screen/more_like_this/cubit/more_like_this_state.dart';
@@ -15,30 +13,34 @@ class MoreLikeThisViewModel extends Cubit<MoreLikeState> {
   late MoreLikeRemoteDataSource remoteDataSource;
 
   MoreLikeThisViewModel() : super(MoreLikeThisLoadingState()) {
-    remoteDataSource = MoreLikeRemoteDataSourceImpl() as MoreLikeRemoteDataSource;
+    remoteDataSource =
+        MoreLikeRemoteDataSourceImpl() as MoreLikeRemoteDataSource;
     moreLikeRepository =
-        MoreLikeRepositoryImpl(remoteDataSource: remoteDataSource) as MoreLikeRepository;
+        MoreLikeRepositoryImpl(remoteDataSource: remoteDataSource)
+            as MoreLikeRepository;
   }
-  int pageNumber=1;
-  List<Movie> list=[];
+  int pageNumber = 1;
+  List<Movie> list = [];
 
-  void getMoreLike(String id,String appLanguage,{bool fromPagination=false}) async {
-    if(fromPagination){
+  void getMoreLike(String id, String appLanguage,
+      {bool fromPagination = false}) async {
+    if (fromPagination) {
       emit(MoreLikeThisPaginationState());
-    }else{
+    } else {
       emit(MoreLikeThisLoadingState());
     }
     try {
-      var response = await moreLikeRepository.getMoreLike(id, pageNumber,appLanguage);
+      var response =
+          await moreLikeRepository.getMoreLike(id, pageNumber, appLanguage);
 
       if (response == null ||
           response.results == null ||
           response.results!.isEmpty) {
         emit(MoreLikeThisErrorState(errorMessage: 'Empty data'));
       } else {
-        if(response.results!.isNotEmpty){
+        if (response.results!.isNotEmpty) {
           pageNumber++;
-          list.addAll(response.results??[]);
+          list.addAll(response.results ?? []);
         }
         emit(MoreLikeThisSuccessState(moreLike: list));
       }

@@ -54,12 +54,15 @@ class MovieDetails {
     this.video,
     this.voteAverage,
     this.voteCount,
-    this.credits,});
+    this.credits,
+  });
 
   MovieDetails.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
-    belongsToCollection = json['belongs_to_collection'] != null ? BelongsToCollection.fromJson(json['belongs_to_collection']) : null;
+    belongsToCollection = json['belongs_to_collection'] != null
+        ? BelongsToCollection.fromJson(json['belongs_to_collection'])
+        : null;
     budget = json['budget'];
     if (json['genres'] != null) {
       genres = [];
@@ -70,7 +73,9 @@ class MovieDetails {
     homepage = json['homepage'];
     id = json['id'];
     imdbId = json['imdb_id'];
-    originCountry = json['origin_country'] != null ? json['origin_country'].cast<String>() : [];
+    originCountry = json['origin_country'] != null
+        ? json['origin_country'].cast<String>()
+        : [];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
@@ -103,7 +108,8 @@ class MovieDetails {
     video = json['video'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
-    credits = json['credits'] != null ? Credits.fromJson(json['credits']) : null;
+    credits =
+        json['credits'] != null ? Credits.fromJson(json['credits']) : null;
   }
   bool? adult;
   String? backdropPath;
@@ -154,16 +160,19 @@ class MovieDetails {
     map['popularity'] = popularity;
     map['poster_path'] = posterPath;
     if (productionCompanies != null) {
-      map['production_companies'] = productionCompanies?.map((v) => v.toJson()).toList();
+      map['production_companies'] =
+          productionCompanies?.map((v) => v.toJson()).toList();
     }
     if (productionCountries != null) {
-      map['production_countries'] = productionCountries?.map((v) => v.toJson()).toList();
+      map['production_countries'] =
+          productionCountries?.map((v) => v.toJson()).toList();
     }
     map['release_date'] = releaseDate;
     map['revenue'] = revenue;
     map['runtime'] = runtime;
     if (spokenLanguages != null) {
-      map['spoken_languages'] = spokenLanguages?.map((v) => v.toJson()).toList();
+      map['spoken_languages'] =
+          spokenLanguages?.map((v) => v.toJson()).toList();
     }
     map['status'] = status;
     map['tagline'] = tagline;
@@ -176,7 +185,6 @@ class MovieDetails {
     }
     return map;
   }
-
 }
 
 /// cast : [{"adult":false,"gender":2,"id":4495,"known_for_department":"Acting","name":"Steve Carell","original_name":"Steve Carell","popularity":42.451,"profile_path":"/dA6n0qpnlMFBlTr8SBULsZbWkvn.jpg","cast_id":6,"character":"Gru (voice)","credit_id":"62101d6cd100b600419a339e","order":0},{"adult":false,"gender":1,"id":41091,"known_for_department":"Acting","name":"Kristen Wiig","original_name":"Kristen Wiig","popularity":55.201,"profile_path":"/p4QYkJ7EboyhzQcexH86SgCOki7.jpg","cast_id":11,"character":"Lucy (voice)","credit_id":"62102273e0ca7f00436fab9d","order":1},{"adult":false,"gender":2,"id":23659,"known_for_department":"Acting","name":"Will Ferrell","original_name":"Will Ferrell","popularity":32.658,"profile_path":"/xYPM1OOLXZguj4FsgmOzTSUXaXd.jpg","cast_id":15,"character":"Maxime (voice)","credit_id":"65b6c6923123450162da4356","order":2},{"adult":false,"gender":1,"id":63522,"known_for_department":"Acting","name":"Sofía Vergara","original_name":"Sofía Vergara","popularity":33.881,"profile_path":"/7VZL8Lupwf3rgNyc7DC3m0XNtvq.jpg","cast_id":16,"character":"Valentina (voice)","credit_id":"65b6c6af312345017bda4b9c","order":3},{"adult":false,"gender":1,"id":17743,"known_for_department":"Acting","name":"Miranda Cosgrove","original_name":"Miranda Cosgrove","popularity":37.282,"profile_path":"/qIGeoyXEVu1LxTH34TWx1YSHyQr.jpg","cast_id":9,"character":"Margo (voice)","credit_id":"62101de2aa7898001b5e491a","order":4},{"adult":false,"gender":1,"id":124750,"known_for_department":"Acting","name":"Dana Gaier","original_name":"Dana Gaier","popularity":10.923,"profile_path":"/oZD7cXIHfdeTdFpc16UNptf99WS.jpg","cast_id":12,"character":"Edith (voice)","credit_id":"62152cbd813831001c65c0d9","order":5},{"adult":false,"gender":1,"id":4505121,"known_for_department":"Acting","name":"Madison Polan","original_name":"Madison Polan","popularity":7.624,"profile_path":"/rFlA9iYyefyFTWv1YIMdMoUFgfZ.jpg","cast_id":20,"character":"Agnes (voice)","credit_id":"65b6c7450cd32a00e4e59b3a","order":6},{"adult":false,"gender":2,"id":124747,"known_for_department":"Acting","name":"Pierre Coffin","original_name":"Pierre Coffin","popularity":16.456,"profile_path":"/eAA9uWRqHlm1LT3nZfXb7UuPfVb.jpg","cast_id":8,"character":"Minions (voice)","credit_id":"62101dd13f4833006b77304f","order":7},{"adult":false,"gender":2,"id":124748,"known_for_department":"Acting","name":"Chris Renaud","original_name":"Chris Renaud","popularity":12.778,"profile_path":"/sumBJgBqRkK4XEJ2JYXpad3MTJs.jpg","cast_id":100,"character":"Principal Übelschlecht (voice)","credit_id":"66b203bfddbf6e53b6fc2047","order":8},{"adult":false,"gender":2,"id":4581,"known_for_department":"Acting","name":"Steve Coogan","original_name":"Steve Coogan","popularity":27.145,"profile_path":"/tT7OXc2qA6hlREHXdwGLp0XihzA.jpg","cast_id":10,"character":"Silas (voice)","credit_id":"62101e33be2d49001a3d6d62","order":9},{"adult":false,"gender":2,"id":58769,"known_for_department":"Acting","name":"Stephen Colbert","original_name":"Stephen Colbert","popularity":7.858,"profile_path":"/zQ6pvfqIqYiV4TB7lDoaJL52H93.jpg","cast_id":18,"character":"Perry Prescott (voice)","credit_id":"65b6c7029ba86a0162f87033","order":10},{"adult":false,"gender":1,"id":2000658,"known_for_department":"Acting","name":"Chloe Fineman","original_name":"Chloe Fineman","popularity":6.802,"profile_path":"/iSVuuIRcamYuwYfXwSKPGWSA0ay.jpg","cast_id":19,"character":"Patsy Prescott (voice)","credit_id":"65b6c711a0b690017bcdaabe","order":11},{"adult":false,"gender":1,"id":125025,"known_for_department":"Acting","name":"Joey King","original_name":"Joey King","popularity":89.571,"profile_path":"/b0diEOPPAxOOInWOP9koaqvqUvi.jpg","cast_id":17,"character":"Poppy Prescott (voice)","credit_id":"65b6c6ef8cfcc7017ce4c398","order":12},{"adult":false,"gender":1,"id":35159,"known_for_department":"Acting","name":"Laraine Newman","original_name":"Laraine Newman","popularity":8.665,"profile_path":"/62i0sFf0IwmkQkBW9Osucgx8qGr.jpg","cast_id":55,"character":"Melora / Additional Voices (voice)","credit_id":"668a92215e1df3ad3157ec6e","order":13},{"adult":false,"gender":2,"id":31531,"known_for_department":"Acting","name":"John DiMaggio","original_name":"John DiMaggio","popularity":21.818,"profile_path":"/qqPw7DOqYEbvwhGvppr6FJK5p5s.jpg","cast_id":35,"character":"Bus Driver (voice)","credit_id":"6682d27bef5530b4b1178654","order":14},{"adult":false,"gender":1,"id":15762,"known_for_department":"Acting","name":"Tara Strong","original_name":"Tara Strong","popularity":22.862,"profile_path":"/8Z86FfWbnUJnyFTcLa9MpVVFhMh.jpg","cast_id":44,"character":"Additional Voices (voice)","credit_id":"66876d74753665665b9eaec3","order":15},{"adult":false,"gender":2,"id":1304658,"known_for_department":"Acting","name":"Romesh Ranganathan","original_name":"Romesh Ranganathan","popularity":8.766,"profile_path":"/kZ4g2kvgx8MHKLEQ7DAQ07ta2Lz.jpg","cast_id":45,"character":"Additional Voices (voice)","credit_id":"6689f21c50d911cc9da39f29","order":16},{"adult":false,"gender":2,"id":1035822,"known_for_department":"Directing","name":"Brad Ableson","original_name":"Brad Ableson","popularity":3.154,"profile_path":"/cOnT6KuNNjwXKmCNw5nmOFPsrsj.jpg","cast_id":46,"character":"Additional Voices (voice)","credit_id":"668a8f6cc0dcf3301fc6e10f","order":17},{"adult":false,"gender":1,"id":230436,"known_for_department":"Production","name":"Barbara Harris","original_name":"Barbara Harris","popularity":8.553,"profile_path":"/d1BGeZT2b81Wa9gCOPdrXGWUtmR.jpg","cast_id":47,"character":"Additional Voices (voice)","credit_id":"668a903b7c42fc10729f0d55","order":18},{"adult":false,"gender":2,"id":4815785,"known_for_department":"Acting","name":"Eden Boulton","original_name":"Eden Boulton","popularity":1.169,"profile_path":null,"cast_id":48,"character":"Additional Voices (voice)","credit_id":"668a9077aac07074e834dee1","order":19},{"adult":false,"gender":2,"id":1541380,"known_for_department":"Acting","name":"JP Karliak","original_name":"JP Karliak","popularity":4.378,"profile_path":"/7Rc3n8KmKUaztqfsIpddO1a2ggn.jpg","cast_id":49,"character":"Additional Voices (voice)","credit_id":"668a90d5f1a15ebcf13fd463","order":20},{"adult":false,"gender":1,"id":64948,"known_for_department":"Acting","name":"Cathy Cavadini","original_name":"Cathy Cavadini","popularity":7.368,"profile_path":"/9sThx5Ajdy1aBJSppQDbTkmANlA.jpg","cast_id":50,"character":"Additional Voices (voice)","credit_id":"668a9134aebc538376014d16","order":21},{"adult":false,"gender":2,"id":1217803,"known_for_department":"Acting","name":"Arif S. Kinchen","original_name":"Arif S. Kinchen","popularity":4.276,"profile_path":"/rY16iqdy5lJIyEMoL941NdzUlEr.jpg","cast_id":51,"character":"Additional Voices (voice)","credit_id":"668a91850645117b3dff21a6","order":22},{"adult":false,"gender":2,"id":105191,"known_for_department":"Acting","name":"Will Collyer","original_name":"Will Collyer","popularity":3.213,"profile_path":"/gxOV12lRnBh6FQUjOxtpRyo9cXx.jpg","cast_id":52,"character":"Additional Voices (voice)","credit_id":"668a919ec06a8066b3a3c560","order":23},{"adult":false,"gender":2,"id":98429,"known_for_department":"Acting","name":"Jeremy Maxwell","original_name":"Jeremy Maxwell","popularity":3.053,"profile_path":"/haG5rF1ogYIsQpIpAQ74Q2P1ek0.jpg","cast_id":53,"character":"Additional Voices (voice)","credit_id":"668a91bc0a795871581826bd","order":24},{"adult":false,"gender":1,"id":1742313,"known_for_department":"Acting","name":"Abby Craden","original_name":"Abby Craden","popularity":1.329,"profile_path":"/vuRCNXWfreSJZQoiExxX3XHhRJK.jpg","cast_id":54,"character":"Additional Voices (voice)","credit_id":"668a91de2f8134724b892deb","order":25},{"adult":false,"gender":2,"id":52360,"known_for_department":"Writing","name":"Ken Daurio","original_name":"Ken Daurio","popularity":6.549,"profile_path":"/w2h65hO12TzEZmONJ3RB6DqcskJ.jpg","cast_id":56,"character":"Additional Voices (voice)","credit_id":"668a924b95d2799e085e43c0","order":26},{"adult":false,"gender":2,"id":65640,"known_for_department":"Acting","name":"Khary Payton","original_name":"Khary Payton","popularity":24.947,"profile_path":"/4PgEGuAb2KkaRb7P9PdK40pPeVH.jpg","cast_id":57,"character":"Additional Voices (voice)","credit_id":"668a92615ddd15ac6c1d4295","order":27},{"adult":false,"gender":2,"id":56348,"known_for_department":"Acting","name":"John DeMita","original_name":"John DeMita","popularity":6.101,"profile_path":"/cIUd7zTcGzJ0CMSkL4SUOee3gME.jpg","cast_id":58,"character":"Additional Voices (voice)","credit_id":"668a927f4f1d575f330c9619","order":28},{"adult":false,"gender":2,"id":53209,"known_for_department":"Acting","name":"Aaron Fors","original_name":"Aaron Fors","popularity":3.061,"profile_path":"/cZuAdf50vu237WYIKryYCLUDiD4.jpg","cast_id":59,"character":"Additional Voices (voice)","credit_id":"668a92c3aebc538376014d31","order":29},{"adult":false,"gender":2,"id":1865803,"known_for_department":"Acting","name":"Isaac Robinson-Smith","original_name":"Isaac Robinson-Smith","popularity":5.404,"profile_path":"/ceNxqevAX7c9uAzl8IthjG3slqy.jpg","cast_id":60,"character":"Additional Voices (voice)","credit_id":"668a930450d911cc9da3af90","order":30},{"adult":false,"gender":1,"id":938425,"known_for_department":"Acting","name":"Willow Geer","original_name":"Willow Geer","popularity":1.608,"profile_path":"/kreFbFc095mvIRI89FIHUlWOBuo.jpg","cast_id":61,"character":"Additional Voices (voice)","credit_id":"668a933f0cb0e470ea57e5e3","order":31},{"adult":false,"gender":2,"id":3455062,"known_for_department":"Acting","name":"Isa Hall","original_name":"Isa Hall","popularity":1.239,"profile_path":null,"cast_id":62,"character":"Additional Voices (voice)","credit_id":"668a935aad7b53bf9189324b","order":32},{"adult":false,"gender":1,"id":2005573,"known_for_department":"Acting","name":"Nisa Ward","original_name":"Nisa Ward","popularity":1.738,"profile_path":"/pOZxSrdG6gSQoa33w8KseZws6aY.jpg","cast_id":116,"character":"Additional Voices (voice)","credit_id":"66b22b8a144a2bd1a999a94b","order":33},{"adult":false,"gender":2,"id":61536,"known_for_department":"Acting","name":"Aaron Hendry","original_name":"Aaron Hendry","popularity":10.388,"profile_path":"/lOA25S5b1fkBL6fnG3u33mFtTdE.jpg","cast_id":64,"character":"Additional Voices (voice)","credit_id":"668a93a50a795871581826dc","order":34},{"adult":false,"gender":1,"id":2092134,"known_for_department":"Acting","name":"Andreana Weiner","original_name":"Andreana Weiner","popularity":1.807,"profile_path":null,"cast_id":117,"character":"Additional Voices (voice)","credit_id":"66b22b91475aadd52fdc7cf5","order":35},{"adult":false,"gender":1,"id":1443485,"known_for_department":"Acting","name":"Colette Whitaker","original_name":"Colette Whitaker","popularity":1.384,"profile_path":"/8ngAVxwb0WKvRII5lLat66IOlz2.jpg","cast_id":66,"character":"Additional Voices (voice)","credit_id":"668a93eb918315dff5ff21cf","order":36},{"adult":false,"gender":2,"id":41088,"known_for_department":"Acting","name":"Jason Segel","original_name":"Jason Segel","popularity":15.815,"profile_path":"/aG6tVNSbl1YEjN65G3luFYnWbUM.jpg","cast_id":118,"character":"Vector (voice) (uncredited)","credit_id":"66c3d8f03cd17c675475dd7d","order":37},{"adult":false,"gender":2,"id":4589,"known_for_department":"Acting","name":"Benjamin Bratt","original_name":"Benjamin Bratt","popularity":66.788,"profile_path":"/y1yVEcSwJS8HtuQmOxk0vAvyGbH.jpg","cast_id":119,"character":"El Macho (voice) (uncredited)","credit_id":"66c3d91133c5b64ce8c9a17a","order":38},{"adult":false,"gender":2,"id":34517,"known_for_department":"Acting","name":"Trey Parker","original_name":"Trey Parker","popularity":17.152,"profile_path":"/pVEfyxGOBoKoirRZtmSsJ7PX91V.jpg","cast_id":120,"character":"Balthazar Bratt (voice) (uncredited)","credit_id":"66c3d93b71ec89bd83d0eb46","order":39}]
@@ -185,7 +193,8 @@ class MovieDetails {
 class Credits {
   Credits({
     this.cast,
-    this.crew,});
+    this.crew,
+  });
 
   Credits.fromJson(dynamic json) {
     if (json['cast'] != null) {
@@ -214,7 +223,6 @@ class Credits {
     }
     return map;
   }
-
 }
 
 /// adult : false
@@ -241,7 +249,8 @@ class Crew {
     this.profilePath,
     this.creditId,
     this.department,
-    this.job,});
+    this.job,
+  });
 
   Crew.fromJson(dynamic json) {
     adult = json['adult'];
@@ -283,7 +292,6 @@ class Crew {
     map['job'] = job;
     return map;
   }
-
 }
 
 /// adult : false
@@ -312,7 +320,8 @@ class Cast {
     this.castId,
     this.character,
     this.creditId,
-    this.order,});
+    this.order,
+  });
 
   Cast.fromJson(dynamic json) {
     adult = json['adult'];
@@ -357,7 +366,6 @@ class Cast {
     map['order'] = order;
     return map;
   }
-
 }
 
 /// english_name : "English"
@@ -368,7 +376,8 @@ class SpokenLanguages {
   SpokenLanguages({
     this.englishName,
     this.iso6391,
-    this.name,});
+    this.name,
+  });
 
   SpokenLanguages.fromJson(dynamic json) {
     englishName = json['english_name'];
@@ -386,7 +395,6 @@ class SpokenLanguages {
     map['name'] = name;
     return map;
   }
-
 }
 
 /// iso_3166_1 : "US"
@@ -395,7 +403,8 @@ class SpokenLanguages {
 class ProductionCountries {
   ProductionCountries({
     this.iso31661,
-    this.name,});
+    this.name,
+  });
 
   ProductionCountries.fromJson(dynamic json) {
     iso31661 = json['iso_3166_1'];
@@ -410,7 +419,6 @@ class ProductionCountries {
     map['name'] = name;
     return map;
   }
-
 }
 
 /// id : 33
@@ -423,7 +431,8 @@ class ProductionCompanies {
     this.id,
     this.logoPath,
     this.name,
-    this.originCountry,});
+    this.originCountry,
+  });
 
   ProductionCompanies.fromJson(dynamic json) {
     id = json['id'];
@@ -444,7 +453,6 @@ class ProductionCompanies {
     map['origin_country'] = originCountry;
     return map;
   }
-
 }
 
 /// id : 16
@@ -453,7 +461,8 @@ class ProductionCompanies {
 class Genres {
   Genres({
     this.id,
-    this.name,});
+    this.name,
+  });
 
   Genres.fromJson(dynamic json) {
     id = json['id'];
@@ -468,7 +477,6 @@ class Genres {
     map['name'] = name;
     return map;
   }
-
 }
 
 /// id : 86066
@@ -481,7 +489,8 @@ class BelongsToCollection {
     this.id,
     this.name,
     this.posterPath,
-    this.backdropPath,});
+    this.backdropPath,
+  });
 
   BelongsToCollection.fromJson(dynamic json) {
     id = json['id'];
@@ -502,5 +511,4 @@ class BelongsToCollection {
     map['backdrop_path'] = backdropPath;
     return map;
   }
-
 }

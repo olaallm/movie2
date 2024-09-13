@@ -5,12 +5,12 @@ import 'package:movie_appp/pages/home_screen/model/MovieVideos.dart';
 import 'package:movie_appp/pages/home_screen/model/movieDetails.dart';
 import 'package:movie_appp/pages/home_screen/repository/movie_details/movie_details_data_source.dart';
 
-
 class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
   get http => null;
 
   @override
-  Future<MovieDetails?> getMovieDetails(String movieId,String appLanguage) async {
+  Future<MovieDetails?> getMovieDetails(
+      String movieId, String appLanguage) async {
     Uri url = Uri.https(ApiConstant.baseUrl, ApiConstant.apiName + movieId, {
       'api_key': '8ad9e9ba188516e715696297859dfd0f',
       'language': appLanguage,
@@ -31,8 +31,10 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
   }
 
   @override
-  Future<MovieVideos?> getMovieVideos(String movieId, String appLanguage)async {
-    Uri url =Uri.https(ApiConstant.baseUrl,ApiConstant.apiName+movieId+ApiConstant.video,{
+  Future<MovieVideos?> getMovieVideos(
+      String movieId, String appLanguage) async {
+    Uri url = Uri.https(ApiConstant.baseUrl,
+        ApiConstant.apiName + movieId + ApiConstant.video, {
       'api_key': '8ad9e9ba188516e715696297859dfd0f',
       'language': 'en-US',
     });
@@ -40,14 +42,11 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         return MovieVideos.fromJson(jsonDecode(response.body));
-      }else {
-        throw Exception(
-            'Failed to load Videos : ${response.statusCode}');
+      } else {
+        throw Exception('Failed to load Videos : ${response.statusCode}');
       }
-    }catch(e){
+    } catch (e) {
       rethrow;
     }
   }
-
-  }
-
+}

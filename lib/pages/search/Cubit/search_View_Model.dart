@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_appp/pages/search/Cubit/search_state.dart';
 import 'package:movie_appp/pages/search/Repositroy/data_Source/movie_Remote_data_source_impl.dart';
@@ -10,18 +9,20 @@ class SearchViewModel extends Cubit<SearchState> {
   late MovieRepository repository;
   late MovieRemoteDataSource dataSource;
 
-
-  SearchViewModel() : super(SearchError('Search On Any Movie You want')){
+  SearchViewModel() : super(SearchError('Search On Any Movie You want')) {
     dataSource = MovieRemoteDataSourceImpl() as MovieRemoteDataSource;
-    repository = MovieRepositoryImpl(remoteDataSource: dataSource) as MovieRepository;
+    repository =
+        MovieRepositoryImpl(remoteDataSource: dataSource) as MovieRepository;
   }
 
-  void search(String query,String appLanguage) async {
+  void search(String query, String appLanguage) async {
     emit(SearchLoadingState());
 
     try {
-      final response = await repository.searchMovies(query,appLanguage);
-      if(response == null || response.results == null || response.results!.isEmpty) {
+      final response = await repository.searchMovies(query, appLanguage);
+      if (response == null ||
+          response.results == null ||
+          response.results!.isEmpty) {
         emit(SearchError("No Data Found"));
       } else {
         emit(SearchLoaded(movieResult: response.results ?? []));

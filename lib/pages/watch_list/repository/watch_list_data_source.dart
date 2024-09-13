@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
 
-
-abstract class WatchListDataSource{
+abstract class WatchListDataSource {
   Future<bool> deleteAll();
   Future<bool> removeMovie(Movie movie);
   Stream<List<Movie>> getAllMovies();

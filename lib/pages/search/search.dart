@@ -11,8 +11,6 @@ import 'package:movie_appp/pages/watch_list/watch_list_view.dart';
 
 import 'package:provider/provider.dart';
 
-
-
 class Search extends StatefulWidget {
   @override
   State<Search> createState() => _SearchState();
@@ -31,8 +29,8 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    var pro=Provider.of<AppProvider>(context);
-    AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
+    var pro = Provider.of<AppProvider>(context);
+    AppProvider provider = AppProvider(appLanguage: pro.appLanguage);
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -42,7 +40,7 @@ class _SearchState extends State<Search> {
             SearchField(
               searchController: _searchController,
               onChanged: (query) {
-                viewModel.search(query,provider.appLanguage);
+                viewModel.search(query, provider.appLanguage);
               },
               onPreesd: () {
                 _searchController.clear();
@@ -50,26 +48,27 @@ class _SearchState extends State<Search> {
               },
             ),
             BlocBuilder<SearchViewModel, SearchState>(
-              bloc: viewModel ,
+              bloc: viewModel,
               builder: (context, state) {
                 if (state is SearchLoaded) {
-                  if(state.movieResult.isNotEmpty){
-                  return Expanded(
-                    child: ListView.separated(
-                      separatorBuilder: (context, index) => Divider(
-                        thickness: 3,
-                        color: AppColors.darkGrayColor,
-                        endIndent: MediaQuery.of(context).size.width * 0.1,
-                        indent: MediaQuery.of(context).size.width * 0.1,
+                  if (state.movieResult.isNotEmpty) {
+                    return Expanded(
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          thickness: 3,
+                          color: AppColors.darkGrayColor,
+                          endIndent: MediaQuery.of(context).size.width * 0.1,
+                          indent: MediaQuery.of(context).size.width * 0.1,
+                        ),
+                        itemCount: state.movieResult.length,
+                        itemBuilder: (context, index) {
+                          return ResultItem(movie: state.movieResult[index]);
+                        },
                       ),
-                      itemCount: state.movieResult.length,
-                      itemBuilder: (context, index) {
-                        return ResultItem(movie: state.movieResult[index]);
-                      },
-                    ),
-                  );
-                  }else{
-                    child: Center(
+                    );
+                  } else {
+                    child:
+                    Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,7 +81,8 @@ class _SearchState extends State<Search> {
                           SizedBox(height: 10),
                           Text(
                             AppLocalizations.of(context)!.search_on_any_movie,
-                            style: TextStyle(color: AppColors.whiteColor,fontSize: 16),
+                            style: TextStyle(
+                                color: AppColors.whiteColor, fontSize: 16),
                           ),
                         ],
                       ),
@@ -110,7 +110,8 @@ class _SearchState extends State<Search> {
                           SizedBox(height: 10),
                           Text(
                             state.message,
-                            style: TextStyle(color: AppColors.whiteColor,fontSize: 16),
+                            style: TextStyle(
+                                color: AppColors.whiteColor, fontSize: 16),
                           ),
                         ],
                       ),
