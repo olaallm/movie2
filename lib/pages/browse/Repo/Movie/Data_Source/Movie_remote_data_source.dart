@@ -2,9 +2,11 @@
 
 
 
-import 'package:movie_appp/pages/browse/Repo/Movie/Movie_data_Source.dart';
-import 'package:movie_appp/pages/home_screen/api/api_manager.dart';
-import 'package:movie_appp/pages/home_screen/model/movie_response.dart';
+
+
+import '../../../../home_screen/model/movie_response.dart';
+import '../../../Api/Api_Manager.dart';
+import '../Movie_data_Source.dart';
 
 class MovieRemoteDataSourceImpl implements Online{
   ApiManager apiManager ;

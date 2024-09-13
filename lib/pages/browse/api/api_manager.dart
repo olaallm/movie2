@@ -9,7 +9,7 @@ import '../Models/CategoryResponse.dart';
 
 class ApiManager {
   Future<CategoryResponse> getCategory(String appLanguage) async {
-    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.CategoryApiName, {
+    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.categoryApiName, {
       "api_key": "d17eaee37c3c16b0b2ccaee413f91589",
       'language': appLanguage
     });
@@ -24,7 +24,7 @@ class ApiManager {
 
   Future<MovieResponse?> getMoives(
       int id, int pageNumber, String appLanguage) async {
-    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.MovieApiName, {
+    Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.movieApiName, {
       "api_key": ApiConstants.apiKey,
       "with_genres": id.toString(),
       'page': pageNumber.toString(),

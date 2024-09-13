@@ -8,6 +8,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movie_appp/app_provider/app_provider.dart';
 import 'package:movie_appp/pages/browse/CategoryPhoto.dart';
 import 'package:movie_appp/pages/browse/Movies/Cubit/MovieState.dart';
+import 'package:movie_appp/pages/browse/Movies/Cubit/Movie_details_viewModel.dart';
 import 'package:movie_appp/pages/home_screen/widgets/movie_item.dart';
 import 'package:provider/provider.dart';
 
@@ -18,14 +19,14 @@ class Moviespage extends StatelessWidget {
   static const String routeName = "Moviespage";
   final Category category;
   Moviespage({required this.category});
-//MovieDetailsViewModel = MovieDetailsVeiwmodel();
+MovieDetailsViewModel viewModel = MovieDetailsViewModel();
 
 
   @override
   Widget build(BuildContext context) {
     var pro=Provider.of<AppProvider>(context);
     AppProvider provider=AppProvider(appLanguage:pro.appLanguage);
-    viewModel.getMoives(category.id,provider.appLanguage);
+   viewModel.getMovies(category.id,provider.appLanguage);
 
     return Scaffold(
         appBar: AppBar(
@@ -34,7 +35,7 @@ class Moviespage extends StatelessWidget {
         ),
         body: BlocProvider(
           create: (context) => viewModel,
-          child: BlocBuilder<MovieDetailsVeiwmodel, Moviestate>(
+          child: BlocBuilder<MovieDetailsViewModel, Moviestate>(
               buildWhen: (previous, current) =>
               current is! PaginationMovieState,
               builder: (context, state) {
@@ -64,7 +65,7 @@ class Moviespage extends StatelessWidget {
                         if (notification.metrics.pixels ==
                             notification.metrics.maxScrollExtent &&
                             notification is ScrollUpdateNotification) {
-                          viewModel.getMoives(category.id,provider.appLanguage,
+                          viewModel.getMovies(category.id,provider.appLanguage,
                               fromPagination: true);
                         }
                         return true;
@@ -86,7 +87,7 @@ class Moviespage extends StatelessWidget {
                               itemCount: state.movieList.length,
                             ),
                           ),
-                          BlocBuilder<MovieDetailsVeiwmodel, Moviestate>(
+                          BlocBuilder<MovieDetailsViewModel, Moviestate>(
                               builder: (context, state) {
                                 if (state is PaginationMovieState) {
                                   return SafeArea(

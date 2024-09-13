@@ -55,10 +55,11 @@
 //   }
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_appp/pages/browse/Repo/Movie/Data_Source/Movie_remote_data_source.dart';
 import 'package:movie_appp/pages/browse/Repo/Movie/Movie_data_Source.dart';
 
 import '../../../home_screen/model/movie_response.dart';
-import '../../../search/Repositroy/data_Source/movie_Remote_data_source_impl.dart';
+
 import '../../Api/Api_Manager.dart';
 import '../../Repo/Movie/Movie_repository_Contract.dart';
 import '../../Repo/Movie/Repository/Movie_repo_impl.dart';
@@ -73,7 +74,8 @@ class MovieDetailsViewModel extends Cubit<Moviestate> {
 
   MovieDetailsViewModel() : super(LoadingMovieState()) {
     apiManager = ApiManager();
-    movieSource = MovieRemoteDataSourceImpl(apiManager: apiManager) as Online;
+    //movieSource = MovieRemoteDataSourceImpl(apiManager: apiManager) as Online;
+   movieSource=MovieRemoteDataSourceImpl(apiManager: apiManager) ;
     movie = MovieRepoImpl(remote: movieSource);
   }
 
